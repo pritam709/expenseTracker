@@ -1,3 +1,4 @@
+import ExpenseForm from "./components/Expenses/ExpenseForm";
 import Expenses from "./components/Expenses/Expenses";
 function App() {
   const array=[
@@ -54,6 +55,7 @@ function App() {
   return (
     <div>
       <h2>Let's get started!</h2>
+      <ExpenseForm />
       <Expenses items={array} />
     </div>
   );
