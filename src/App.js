@@ -1,7 +1,8 @@
 import ExpenseForm from "./components/Expenses/ExpenseForm";
 import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/Expenses/NewExpense";
 function App() {
-  const array=[
+  let array=[
     {
       id:"e1",
       title:"helmet",
@@ -52,10 +53,15 @@ function App() {
       location:"murthal"
     }
   ]
+  const addExpenseHandler=(expense)=>{
+    console.log("in app.js");
+    console.log(expense);
+    
+  }
   return (
     <div>
       <h2>Let's get started!</h2>
-      <ExpenseForm />
+     <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={array} />
     </div>
   );
