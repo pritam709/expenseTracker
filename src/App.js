@@ -51,6 +51,13 @@ const array=[
     amount:1250,
     date:new Date(2023,7,25),
     location:"murthal"
+  },
+  {
+    id:"e8",
+    title:"helmet 2",
+    amount:3650,
+    date:new Date(2022,8,2),
+    location:"Karol Bagh"
   }
 ]
 function App() {

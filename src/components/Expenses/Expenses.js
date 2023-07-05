@@ -13,13 +13,35 @@ const Expenses = (props) => {
     (item) => year === item.date.getFullYear().toString()
   );
 
+  let noOfExpenses= "zero";
+  if(filteredArray.length ===1){
+    return (
+        <Card className="expenses">
+          <ExpenseFilter onChangeYear={changeYearHandler} defaultYear={year} />
+          <p style={{color:"white"}}>Only single Expense here. Please add more...</p>
+         { filteredArray.map((item) => (
+            <ExpenseItem key={item.id} title={item.title}
+            date={item.date} amount={item.amount} />
+          ))}
+          
+          
+        </Card>
+      );
+    
+  }
+  if(filteredArray.length >1){
+    noOfExpenses="many";
+  }
+
   return (
     <Card className="expenses">
       <ExpenseFilter onChangeYear={changeYearHandler} defaultYear={year} />
-      {filteredArray.map((item) => (
+      {(noOfExpenses==="zero") ? <p style={{color:"white"}}>no expenses found</p>:(filteredArray.map((item) => (
         <ExpenseItem key={item.id} title={item.title}
         date={item.date} amount={item.amount} />
-      ))}
+      )))}
+      
+      
     </Card>
   );
 };
