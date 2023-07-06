@@ -3,6 +3,7 @@ import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import "./Expenses.css";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesChart from "./ExpensesChart";
 const Expenses = (props) => {
   const [year, setYear] = useState("2023");
   const changeYearHandler = (selectedYear) => {
@@ -18,6 +19,7 @@ const Expenses = (props) => {
     return (
         <Card className="expenses">
           <ExpenseFilter onChangeYear={changeYearHandler} defaultYear={year} />
+          <ExpensesChart expenses={filteredArray} />
           <p style={{color:"white"}}>Only single Expense here. Please add more...</p>
          { filteredArray.map((item) => (
             <ExpenseItem key={item.id} title={item.title}
@@ -36,6 +38,8 @@ const Expenses = (props) => {
   return (
     <Card className="expenses">
       <ExpenseFilter onChangeYear={changeYearHandler} defaultYear={year} />
+      <ExpensesChart expenses={filteredArray} />
+
       {(noOfExpenses==="zero") ? <p style={{color:"white"}}>no expenses found</p>:(filteredArray.map((item) => (
         <ExpenseItem key={item.id} title={item.title}
         date={item.date} amount={item.amount} />
